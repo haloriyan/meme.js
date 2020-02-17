@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MemeJS</title>
+</head>
+<body>
+
+<script src="meme.js"></script>
+<script>
+    let meme = new MemeJS()
+    meme.setBackground("./assets/bg.jpg")
+    meme.addImage({
+        src: './assets/js.jpg',
+        width: 130,
+        height: 130,
+        position: {
+            x: 200,
+            y: 305
+        }
+    })
+    meme.addText({
+        text: '*temen: lu kalo bikin meme gimana?',
+        position: {
+            x: 25, 
+            y: 55
+        }
+    })
+    meme.addText({
+        text: 'gw :',
+        position: {
+            x: 25, 
+            y: 105
+        }
+    })
+    meme.download("gambar.png")
+</script>
+
+</body>
+</html>
