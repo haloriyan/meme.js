@@ -8,7 +8,7 @@ let meme = new MemeJS()
 
 ## APIs
 |Method|Params|
-|---|--|--|
+|---|--|
 |setBackground|source `string`|
 |addText|text, position (x, y) `object`|
 |addImage|source, width, height, position (x, y) `object`|
