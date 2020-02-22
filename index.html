@@ -10,8 +10,11 @@
 
 <script src="meme.js"></script>
 <script>
-    let meme = new MemeJS()
-    meme.setBackground("./assets/bg.jpg")
+    let meme = new MemeJS({
+        width: 600,
+        height: 600
+    })
+    meme.setTemplate("./assets/bg.jpg")
     meme.addImage({
         src: './assets/js.jpg',
         width: 130,
@@ -35,7 +38,7 @@
             y: 105
         }
     })
-    meme.download("gambar.png")
+    meme.download("meme")
 </script>
 
 </body>

@@ -1,6 +1,8 @@
 class MemeJS {
     constructor(props) {
         this.body = this.select("body")
+        this.width = props.width
+        this.height = props.height
 
         this.init()
         this.canvas = this.select("canvas")
@@ -21,25 +23,13 @@ class MemeJS {
     }
     init() {
         this.body.style.textAlign = 'center'
-        this.createCanvas(600, 600, 4)
+        this.createCanvas(this.width, this.height, 1)
     }
-    inits() {
-        this.body.style.textAlign = 'center'
-        let canvas = document.createElement('canvas')
-        canvas.style.width = '600px'
-        canvas.style.height = '600px'
-        canvas.style.marginTop = '2%'
-        this.body.appendChild(canvas)
-    }
-    setBackground(source) {
-        // this.canvas.style.background = `url(${source})`
-        // this.canvas.style.backgroundSize = '600px 600px'
-        // this.canvas.style.backgroundRepeat = `no-repeat`
-        // this.canvas.style.backgroundPosition = `center center`
+    setTemplate(source) {
         this.addImage({
             src: source,
-            width: 600,
-            height: 600,
+            width: this.width,
+            height: this.height,
             position: {x:0,y:0}
         })
     }
@@ -60,19 +50,12 @@ class MemeJS {
             this.ctx.drawImage(img, props.position.x, props.position.y, props.width, props.height)
         }
     }
-    download(filename = "meme.png") {
-        let lnk = document.createElement('a'), e
-        lnk.download = filename
-        lnk.href = this.canvas.toDataURL('image/png')
-        if (document.createEvent) {
-            e = document.createEvent("MouseEvents");
-            e.initMouseEvent("click", true, true, window,
-                            0, 0, 0, 0, 0, false, false, false,
-                            false, 0, null);
-
-            lnk.dispatchEvent(e);
-        } else if (lnk.fireEvent) {
-            lnk.fireEvent("onclick");
-        }
+    download(filename = "meme") {
+        setTimeout(() => {
+            let link = document.createElement('a')
+            link.download = filename + ".png"
+            link.href = this.canvas.toDataURL()
+            link.click()
+        }, 1500);
     }
 }
